@@ -4,6 +4,11 @@ import logging.config
 
 
 def login_auth(user_type):
+    '''
+    验证登录装饰器
+    :param user_type: admin, student, teacher
+    :return: func(*args, **kwargs)
+    '''
     from core import admin, student, teacher
     def auth(func):
         def wrapper(*args, **kwargs):
@@ -40,6 +45,11 @@ def login_auth(user_type):
 
 
 def take_all_dir(path):
+    '''
+    拿到工程的文件路径
+    :param path: 
+    :return: 
+    '''
     if os.path.exists(path):
         obj_dir = os.listdir(path)
         return obj_dir
@@ -47,6 +57,11 @@ def take_all_dir(path):
 
 
 def get_logger(name):
+    '''
+    用于拿到日志字典，记录日志
+    :param name: 
+    :return: 
+    '''
     logging.config.dictConfig(settings.LOGGING_DIC)
     my_log = logging.getLogger(name)
     return my_log
